@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🐉 Universo Rayquaza</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #071c10, #173d20, #421010);
+    color: white;
+    text-align: center;
+}
+
+header {
+    padding: 30px 15px;
+    background: linear-gradient(90deg, #08752e, #b51e25, #dba900);
+    border-bottom: 4px solid #ffe34d;
+}
+
+header h1 {
+    font-size: clamp(30px, 6vw, 52px);
+    text-shadow: 3px 3px 8px black;
+    animation: brilho 2s infinite alternate;
+}
+
+header p {
+    margin-top: 10px;
+}
+
+nav {
+    margin-top: 22px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    background: #12371e;
+    padding: 12px 16px;
+    border-radius: 20px;
+    transition: .3s;
+}
+
+nav a:hover {
+    background: #ffcf28;
+    color: #171717;
+    transform: scale(1.1);
+}
+
+section {
+    padding: 45px 18px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+h2 {
+    color: #ffdf37;
+    font-size: 30px;
+    margin-bottom: 25px;
+}
+
+p {
+    line-height: 1.7;
+}
+
+.hero {
+    padding-top: 35px;
+}
+
+.hero img {
+    width: 320px;
+    max-width: 90%;
+    animation: voar 3s infinite ease-in-out;
+    filter: drop-shadow(0 0 20px #27ff64);
+}
+
+@keyframes voar {
+    0%, 100% { transform: translateY(0) rotate(-2deg); }
+    50% { transform: translateY(-18px) rotate(2deg); }
+}
+
+@keyframes brilho {
+    from { text-shadow: 0 0 5px #fff; }
+    to { text-shadow: 0 0 22px #ffeb3b, 0 0 35px #ff2525; }
+}
+
+.botao {
+    background: linear-gradient(90deg, #20d75a, #ffdf37);
+    color: #142016;
+    border: 2px solid white;
+    border-radius: 25px;
+    padding: 13px 22px;
+    margin: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.botao:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 18px #ffdf37;
+}
+
+.grade {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 22px;
+}
+
+.card {
+    background: linear-gradient(145deg, #14542c, #321313);
+    border: 2px solid #37df66;
+    border-radius: 18px;
+    padding: 22px;
+    transition: .35s;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: #ffdf37;
+    box-shadow: 0 0 22px #1dff63;
+}
+
+.card img {
+    width: 190px;
+    max-width: 100%;
+    height: 190px;
+    object-fit: contain;
+    transition: .4s;
+    filter: drop-shadow(0 0 8px #ffffff35);
+}
+
+.card:hover img {
+    transform: scale(1.12) rotate(3deg);
+}
+
+.card h3 {
+    color: #ffdf37;
+    margin: 12px 0;
+}
+
+#resultado, #resultado2, #resultado3 {
+    font-size: 19px;
+    color: #fff16b;
+    margin: 20px 0;
+    min-height: 28px;
+    font-weight: bold;
+}
+
+.painel {
+    background: #102d1b;
+    border: 2px solid #e8c52a;
+    border-radius: 20px;
+    padding: 25px;
+    margin: 20px auto;
+    max-width: 700px;
+}
+
+.opcoes {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.barra {
+    height: 7px;
+    width: 0;
+    background: linear-gradient(90deg, #28ed59, #ffe339, #ff3333);
+    border-radius: 20px;
+    margin: 20px auto;
+    animation: carregar 3s infinite alternate;
+}
+
+@keyframes carregar {
+    from { width: 10%; }
+    to { width: 95%; }
+}
+
+footer {
+    padding: 30px 15px;
+    background: linear-gradient(90deg, #08752e, #a51b24, #dba900);
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+#pontos {
+    color: #ffdf37;
+    font-size: 22px;
+    margin: 15px;
+}
+
+#arena {
+    position: relative;
+    height: 300px;
+    max-width: 650px;
+    margin: 20px auto;
+    overflow: hidden;
+    border: 3px solid #ffdf37;
+    border-radius: 18px;
+    background: radial-gradient(circle, #245b31, #071b10);
+}
+
+#alvo {
+    position: absolute;
+    font-size: 45px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    left: 45%;
+    top: 40%;
+    transition: left .15s, top .15s;
+}
+
+.quiz-opcao {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid #ffdf37;
+    background: #174628;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.quiz-opcao:hover {
+    background: #b51e25;
+}
+
+#colecao img {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+}
+
+#colecao {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+@media (max-width: 600px) {
+    section { padding: 35px 14px; }
+    h2 { font-size: 25px; }
+    header h1 { font-size: 32px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🐉 UNIVERSO RAYQUAZA</h1>
+    <p>O poder lendário dos céus! 💚❤️💛</p>
+    <nav>
+        <a href="#inicio">Início</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#curiosidades">Curiosidades</a>
+        <a href="#quiz">Quiz</a>
+        <a href="#jogos">Jogos</a>
+        <a href="#colecao">Coleção</a>
+    </nav>
+</header>
+
+<section id="inicio" class="hero">
+    <h2>O guardião dos céus</h2>
+
+    <img
+        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/384.png"
+        alt="Rayquaza"
+    >
+
+    <div class="barra"></div>
+
+    <p>
+        Entre no universo de Rayquaza, o lendário Pokémon dos tipos
+        Dragão e Voador! Explore imagens, descubra curiosidades,
+        responda desafios e jogue minigames neste mundo cheio de
+        energia, aventuras e poderes extraordinários.
+    </p>
+
+    <button class="botao" onclick="surpresa()">✨ Poder misterioso</button>
+    <p id="resultado"></p>
+</section>
+
+<section id="galeria">
+    <h2>📸 Galeria Pokémon</h2>
+
+    <div class="grade">
+        <div class="card">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/384.png" alt="Rayquaza normal">
+            <h3>Rayquaza</h3>
+            <p>O lendário guardião da atmosfera.</p>
+        </div>
+
+        <div class="card">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/384.png" alt="Rayquaza em sua forma lendária">
+            <h3>Rei dos céus</h3>
+            <p>Um dos Pokémon mais marcantes da região de Hoenn.</p>
+        </div>
+
+        <div class="card">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/383.png" alt="Groudon">
+            <h3>Groudon</h3>
+            <p>O poderoso Pokémon lendário dos continentes.</p>
+        </div>
+
+        <div class="card">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/382.png" alt="Kyogre">
+            <h3>Kyogre</h3>
+            <p>O lendário Pokémon associado aos oceanos.</p>
+        </div>
+
+        <div class="card">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/6.png" alt="Charizard">
+            <h3>Charizard</h3>
+            <p>Um Pokémon famoso por seu poder de fogo.</p>
+        </div>
+
+        <div class="card">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png" alt="Pikachu">
+            <h3>Pikachu</h3>
+            <p>O famoso Pokémon elétrico.</p>
+        </div>
+
+        <div class="card">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/150.png" alt="Mewtwo">
+            <h3>Mewtwo</h3>
+            <p>Um Pokémon conhecido por seus poderes psíquicos.</p>
+        </div>
+
+        <div class="card">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/249.png" alt="Lugia">
+            <h3>Lugia</h3>
+            <p>Um Pokémon lendário ligado aos mares e aos céus.</p>
+        </div>
+    </div>
+</section>
+
+<section id="curiosidades">
+    <h2>💚 Curiosidades sobre Rayquaza</h2>
+
+    <div class="grade">
+        <div class="card">
+            <h3>🔢 Pokédex</h3>
+            <p>Rayquaza é o número 384 na Pokédex nacional.</p>
+        </div>
+
+        <div class="card">
+            <h3>🌌 Onde vive?</h3>
+            <p>É conhecido por viver na atmosfera, muito acima das nuvens.</p>
+        </div>
+
+        <div class="card">
+            <h3>⚡ Mega Rayquaza</h3>
+            <p>Ele possui uma Mega Evolução extremamente poderosa.</p>
+        </div>
+
+        <div class="card">
+            <h3>🌊 Equilíbrio</h3>
+            <p>Nas histórias Pokémon, pode intervir nos conflitos entre Groudon e Kyogre.</p>
+        </div>
+    </div>
+</section>
+
+<section id="quiz">
+    <h2>🧠 Quiz do Rayquaza</h2>
+
+    <div class="painel">
+        <p id="pergunta">Qual é o número de Rayquaza na Pokédex?</p>
+        <div class="opcoes" id="opcoes"></div>
+        <p id="resultado2"></p>
+        <p id="progresso"></p>
+        <button class="botao" onclick="proximaPergunta()">Próxima pergunta ➜</button>
+    </div>
+</section>
+
+<section id="jogos">
+    <h2>🎮 Capture o Rayquaza!</h2>
+
+    <div class="painel">
+        <p>Clique no Rayquaza o máximo de vezes que conseguir em 15 segundos!</p>
+        <p id="pontos">Pontos: 0</p>
+        <p id="tempo">Tempo: 15 segundos</p>
+
+        <button class="botao" id="iniciar" onclick="iniciarJogo()">Começar jogo</button>
+
+        <div id="arena">
+            <button id="alvo" onclick="capturar()" aria-label="Capturar Rayquaza" hidden>🐉</button>
+        </div>
+
+        <p id="resultado3"></p>
+    </div>
+</section>
+
+<section id="colecao">
+    <h2>🏆 Colecione os Pokémon</h2>
+
+    <div class="painel">
+        <p>Clique no botão para encontrar um Pokémon aleatório!</p>
+        <button class="botao" onclick="encontrarPokemon()">Encontrar Pokémon ✨</button>
+        <div id="pokemonEncontrado"></div>
+    </div>
+</section>
+
+<footer>
+    <p>🐉 Universo Rayquaza</p>
+    <p>Feito com 💚, ❤️ e 💛 para fãs de Pokémon!</p>
+    <p>Pokémon é uma marca de seus respectivos proprietários.</p>
+</footer>
+
+<script>
+function surpresa() {
+    const mensagens = [
+        "🐉 Rayquaza está liberando sua energia lendária!",
+        "💚 Você desbloqueou o poder dos céus!",
+        "❤️ Uma aventura lendária está começando!",
+        "💛 Energia máxima! O céu está brilhando!",
+        "⚡ Mega Rayquaza está pronto para a batalha!"
+    ];
+
+    document.getElementById("resultado").textContent =
+        mensagens[Math.floor(Math.random() * mensagens.length)];
+}
+
+const perguntas = [
+    {
+        pergunta: "Qual é o número de Rayquaza na Pokédex?",
+        opcoes: ["150", "384", "25", "6"],
+        resposta: "384"
+    },
+    {
+        pergunta: "Quais são os tipos de Rayquaza?",
+        opcoes: ["Fogo e Água", "Planta e Elétrico", "Dragão e Voador", "Pedra e Terra"],
+        resposta: "Dragão e Voador"
+    },
+    {
+        pergunta: "Em qual região Rayquaza é encontrado?",
+        opcoes: ["Kanto", "Johto", "Sinnoh", "Hoenn"],
+        resposta: "Hoenn"
+    },
+    {
+        pergunta: "Quais Pokémon estão associados a Rayquaza?",
+        opcoes: ["Groudon e Kyogre", "Pikachu e Eevee", "Mew e Mewtwo", "Bulbasaur e Charmander"],
+        resposta: "Groudon e Kyogre"
+    },
+    {
+        pergunta: "Qual é a forma especial de Rayquaza?",
+        opcoes: ["Gigantamax Rayquaza", "Mega Rayquaza", "Rayquaza Solar", "Rayquaza Primal"],
+        resposta: "Mega Rayquaza"
+    }
+];
+
+let indice = 0;
+let pontosQuiz = 0;
+let respondeu = false;
+
+function mostrarPergunta() {
+    const p = perguntas[indice];
+    document.getElementById("pergunta").textContent = p.pergunta;
+    document.getElementById("resultado2").textContent = "";
+    document.getElementById("progresso").textContent =
+        "Pergunta " + (indice + 1) + " de " + perguntas.length;
+
+    const opcoes = document.getElementById("opcoes");
+    opcoes.innerHTML = "";
+    respondeu = false;
+
+    p.opcoes.forEach(opcao => {
+        const botao = document.createElement("button");
+        botao.className = "quiz-opcao";
+        botao.textContent = opcao;
+        botao.onclick = () => responder(opcao);
+        opcoes.appendChild(botao);
+    });
+}
+
+function responder(opcao) {
+    if (respondeu) return;
+    respondeu = true;
+
+    const correta = perguntas[indice].resposta;
+    const resultado = document.getElementById("resultado2");
+
+    if (opcao === correta) {
+        pontosQuiz++;
+        resultado.textContent = "🎉 Resposta correta! Mandou bem!";
+    } else {
+        resultado.textContent = "💚 A resposta era: " + correta;
+    }
+
+    document.getElementById("progresso").textContent +=
+        " | Pontuação: " + pontosQuiz;
+
+    document.querySelectorAll(".quiz-opcao").forEach(b => {
+        b.disabled = true;
+        if (b.textContent === correta) {
+            b.style.background = "#16883a";
+        }
+    });
+
+    if (indice === perguntas.length - 1) {
+        resultado.textContent +=
+            " Quiz concluído! Você acertou " + pontosQuiz +
+            " de " + perguntas.length + " perguntas.";
+    }
+}
+
+function proximaPergunta() {
+    if (indice < perguntas.length - 1) {
+        indice++;
+        mostrarPergunta();
+    } else {
+        indice = 0;
+        pontosQuiz = 0;
+        mostrarPergunta();
+    }
+}
+
+mostrarPergunta();
+
+let pontosJogo = 0;
+let segundos = 15;
+let intervalo = null;
+let jogoAtivo = false;
+
+function iniciarJogo() {
+    clearInterval(intervalo);
+
+    pontosJogo = 0;
+    segundos = 15;
+    jogoAtivo = true;
+
+    document.getElementById("pontos").textContent = "Pontos: 0";
+    document.getElementById("tempo").textContent = "Tempo: 15 segundos";
+    document.getElementById("resultado3").textContent = "";
+    document.getElementById("alvo").hidden = false;
+    document.getElementById("iniciar").disabled = true;
+
+    moverAlvo();
+
+    intervalo = setInterval(() => {
+        segundos--;
+        document.getElementById("tempo").textContent =
+            "Tempo: " + segundos + " segundos";
+
+        if (segundos <= 0) {
+            clearInterval(intervalo);
+            jogoAtivo = false;
+            document.getElementById("alvo").hidden = true;
+            document.getElementById("iniciar").disabled = false;
+            document.getElementById("resultado3").textContent =
+                "🏆 Fim de jogo! Você conseguiu " + pontosJogo + " pontos!";
+        }
+    }, 1000);
+}
+
+function moverAlvo() {
+    const arena = document.getElementById("arena");
+    const alvo = document.getElementById("alvo");
+
+    const maxX = Math.max(0, arena.clientWidth - alvo.offsetWidth);
+    const maxY = Math.max(0, arena.clientHeight - alvo.offsetHeight);
+
+    alvo.style.left = Math.random() * maxX + "px";
+    alvo.style.top = Math.random() * maxY + "px";
+}
+
+function capturar() {
+    if (!jogoAtivo) return;
+
+    pontosJogo++;
+    document.getElementById("pontos").textContent =
+        "Pontos: " + pontosJogo;
+
+    moverAlvo();
+}
+
+const pokemons = [
+    { nome: "Rayquaza", numero: 384 },
+    { nome: "Pikachu", numero: 25 },
+    { nome: "Charizard", numero: 6 },
+    { nome: "Mewtwo", numero: 150 },
+    { nome: "Groudon", numero: 383 },
+    { nome: "Kyogre", numero: 382 },
+    { nome: "Lugia", numero: 249 },
+    { nome: "Eevee", numero: 133 },
+    { nome: "Lucario", numero: 448 },
+    { nome: "Gengar", numero: 94 }
+];
+
+function encontrarPokemon() {
+    const pokemon = pokemons[Math.floor(Math.random() * pokemons.length)];
+    const area = document.getElementById("pokemonEncontrado");
+
+    area.innerHTML = "";
+
+    const imagem = document.createElement("img");
+    imagem.src =
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" +
+        pokemon.numero + ".png";
+    imagem.alt = pokemon.nome;
+
+    const titulo = document.createElement("h3");
+    titulo.style.color = "#ffdf37";
+    titulo.textContent = "Você encontrou " + pokemon.nome + "!";
+
+    const numero = document.createElement("p");
+    numero.textContent = "Pokédex nacional: #" + pokemon.numero;
+
+    area.appendChild(imagem);
+    area.appendChild(titulo);
+    area.appendChild(numero);
+}
+</script>
+
+</body>
+</html>
