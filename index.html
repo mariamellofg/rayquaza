@@ -20,28 +20,31 @@
             font-family: Arial, sans-serif;
             background: linear-gradient(135deg, #e8ffe8, #fff4a8, #ffe1e1);
             color: #183d24;
+            overflow-x: hidden;
         }
 
         header {
-            background: linear-gradient(90deg, #087a36, #d62828, #f2c500);
+            background: linear-gradient(120deg, #087a36, #d62828, #f2c500);
+            background-size: 300% 300%;
             color: white;
             text-align: center;
-            padding: 30px 15px;
+            padding: 35px 15px;
+            animation: fundoColorido 8s ease infinite;
         }
 
         header h1 {
-            font-size: 38px;
-            animation: aparecer 2s ease-in-out;
+            font-size: clamp(28px, 6vw, 45px);
+            animation: aparecer 1.5s ease, brilhoTexto 3s infinite;
         }
 
         header p {
-            margin-top: 10px;
-            font-size: 17px;
+            margin-top: 12px;
+            animation: subir 1.5s ease;
         }
 
         nav {
-            background-color: #123c25;
-            padding: 15px;
+            background: #123c25;
+            padding: 12px 8px;
             text-align: center;
             position: sticky;
             top: 0;
@@ -49,21 +52,21 @@
         }
 
         nav a {
+            display: inline-block;
             color: white;
             text-decoration: none;
-            margin: 10px;
+            margin: 7px;
             font-weight: bold;
-            display: inline-block;
-            transition: 0.3s;
+            transition: .3s;
         }
 
         nav a:hover {
             color: #ffe44d;
-            transform: scale(1.1);
+            transform: scale(1.12);
         }
 
         section {
-            padding: 35px 20px;
+            padding: 40px 20px;
             max-width: 1100px;
             margin: auto;
         }
@@ -71,8 +74,16 @@
         h2 {
             text-align: center;
             color: #087a36;
-            margin-bottom: 20px;
-            font-size: 28px;
+            margin-bottom: 24px;
+            font-size: 29px;
+        }
+
+        h3 {
+            margin-bottom: 12px;
+        }
+
+        p {
+            line-height: 1.7;
         }
 
         .inicio {
@@ -81,42 +92,42 @@
 
         .inicio p {
             font-size: 18px;
-            line-height: 1.7;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
         .imagem-principal {
-            width: 100%;
-            max-width: 550px;
-            border-radius: 20px;
             display: block;
+            width: 100%;
+            max-width: 450px;
             margin: 25px auto;
-            animation: flutuar 3s ease-in-out infinite;
-            filter: drop-shadow(0 10px 12px #777);
+            animation: flutuar 3s ease-in-out infinite,
+                       entradaImagem 1.5s ease;
+            filter: drop-shadow(0 10px 15px #0003);
         }
 
         .botao {
             display: inline-block;
             background: #087a36;
             color: white;
-            padding: 12px 22px;
+            padding: 12px 20px;
+            margin: 5px;
+            border: none;
             border-radius: 25px;
             text-decoration: none;
-            border: none;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: bold;
-            transition: 0.3s;
+            transition: .3s;
         }
 
         .botao:hover {
             background: #d62828;
-            transform: scale(1.08);
+            transform: scale(1.07);
         }
 
         .galeria {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
             gap: 20px;
         }
 
@@ -126,8 +137,9 @@
             border-radius: 18px;
             padding: 15px;
             text-align: center;
-            box-shadow: 0 5px 12px #0002;
-            transition: 0.3s;
+            box-shadow: 0 5px 15px #0002;
+            animation: aparecer 1s ease both;
+            transition: .35s;
         }
 
         .cartao:hover {
@@ -137,25 +149,24 @@
 
         .cartao img {
             width: 100%;
-            height: 220px;
+            height: 210px;
             object-fit: contain;
-            transition: 0.4s;
+            transition: .4s;
         }
 
         .cartao:hover img {
-            transform: scale(1.08);
+            transform: scale(1.1) rotate(-3deg);
         }
 
         .cartao h3 {
             color: #d62828;
-            margin-top: 10px;
         }
 
         .curiosidades {
-            background: #ffffffb8;
+            background: #ffffffd9;
             border-radius: 18px;
             padding: 25px;
-            line-height: 1.8;
+            line-height: 1.9;
         }
 
         .curiosidades li {
@@ -163,23 +174,24 @@
         }
 
         .jogo {
-            background: #fff;
+            background: #ffffffed;
             padding: 25px;
+            margin: 22px 0;
             border-radius: 20px;
             text-align: center;
             box-shadow: 0 5px 15px #0002;
-            margin-top: 20px;
+            border-top: 5px solid #087a36;
+            animation: aparecer 1s ease;
         }
 
         .jogo p {
-            margin: 15px 0;
-            line-height: 1.6;
+            margin: 12px 0;
         }
 
         .pergunta {
-            margin: 20px 0;
-            padding: 15px;
             background: #f0ffe9;
+            padding: 15px;
+            margin: 15px 0;
             border-radius: 12px;
             text-align: left;
         }
@@ -187,30 +199,41 @@
         .pergunta button {
             display: block;
             width: 100%;
-            margin-top: 10px;
-            padding: 10px;
-            background: #fff;
+            margin-top: 9px;
+            padding: 11px;
             border: 2px solid #087a36;
             border-radius: 10px;
+            background: white;
             cursor: pointer;
             text-align: left;
-            transition: 0.2s;
+            transition: .2s;
         }
 
         .pergunta button:hover {
             background: #fff1a8;
         }
 
+        .resposta-correta {
+            background: #b8f5b8 !important;
+        }
+
+        .resposta-errada {
+            background: #ffcaca !important;
+        }
+
         #resultadoQuiz,
         #resultadoClique,
-        #mensagemSurpresa {
+        #mensagemSurpresa,
+        #resultadoMemoria,
+        #resultadoAdivinha,
+        #resultadoRapido {
             font-weight: bold;
             margin-top: 15px;
             color: #087a36;
         }
 
         #alvo {
-            font-size: 70px;
+            font-size: 75px;
             display: inline-block;
             cursor: pointer;
             user-select: none;
@@ -224,7 +247,71 @@
             height: 300px;
             object-fit: contain;
             margin: 20px auto;
-            animation: aparecer 0.7s ease-in-out;
+            animation: aparecer .7s ease-in-out;
+        }
+
+        .cartas-memoria {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(70px, 100px));
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .carta {
+            height: 90px;
+            border: none;
+            border-radius: 12px;
+            background: #087a36;
+            color: white;
+            font-size: 35px;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .carta:hover {
+            transform: scale(1.06);
+        }
+
+        .carta.revelada {
+            background: #fff1a8;
+            color: #183d24;
+        }
+
+        .opcoes-adivinha {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .opcoes-adivinha button {
+            border: 2px solid #087a36;
+            background: white;
+            padding: 12px 16px;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+
+        .opcoes-adivinha button:hover {
+            background: #fff1a8;
+        }
+
+        .barra-tempo {
+            width: 100%;
+            height: 14px;
+            background: #ddd;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+
+        #barraProgresso {
+            width: 100%;
+            height: 100%;
+            background: #087a36;
+            transition: width .3s linear;
         }
 
         footer {
@@ -235,59 +322,85 @@
             line-height: 1.8;
         }
 
-        @keyframes flutuar {
-            0%, 100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-12px);
-            }
+        .revelar {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: opacity .8s ease, transform .8s ease;
         }
 
-        @keyframes aparecer {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .revelar.visivel {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        @keyframes brilho {
-            0%, 100% {
-                box-shadow: 0 0 8px #ffe44d;
-            }
-
-            50% {
-                box-shadow: 0 0 25px #ffe44d;
-            }
+        .texto-animado {
+            animation: textoColorido 4s ease infinite;
+            background: linear-gradient(90deg, #087a36, #d62828, #b18b00, #087a36);
+            background-size: 300% auto;
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
         }
 
         .destaque {
             animation: brilho 2s infinite;
         }
 
+        @keyframes flutuar {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        @keyframes aparecer {
+            from { opacity: 0; transform: translateY(25px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes entradaImagem {
+            from { opacity: 0; transform: scale(.7); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes subir {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fundoColorido {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes brilhoTexto {
+            0%, 100% { text-shadow: 0 0 4px #fff8; }
+            50% { text-shadow: 0 0 18px #fff; }
+        }
+
+        @keyframes textoColorido {
+            0% { background-position: 0% center; }
+            100% { background-position: 300% center; }
+        }
+
+        @keyframes brilho {
+            0%, 100% { box-shadow: 0 0 8px #ffe44d; }
+            50% { box-shadow: 0 0 25px #ffe44d; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: .01ms !important;
+            }
+        }
+
         @media (max-width: 600px) {
-            header h1 {
-                font-size: 29px;
-            }
-
-            nav a {
-                margin: 7px;
-                font-size: 14px;
-            }
-
-            section {
-                padding: 25px 15px;
-            }
-
-            h2 {
-                font-size: 24px;
-            }
+            header h1 { font-size: 29px; }
+            nav a { margin: 6px; font-size: 13px; }
+            section { padding: 28px 15px; }
+            h2 { font-size: 25px; }
+            .inicio p { font-size: 16px; }
         }
     </style>
 </head>
@@ -307,11 +420,11 @@
         <a href="#jogos">Jogos</a>
     </nav>
 
-    <section id="inicio" class="inicio">
-        <h2>Conheça Rayquaza!</h2>
+    <section id="inicio" class="inicio revelar">
+        <h2 class="texto-animado">Conheça Rayquaza!</h2>
 
         <p>
-            Rayquaza é um Pokémon lendário do tipo Dragão e Voador.
+            Rayquaza é um Pokémon lendário dos tipos Dragão e Voador.
             Ele vive na camada de ozônio e é conhecido por sua aparência
             impressionante, seu poder e sua capacidade de voar pelo céu.
         </p>
@@ -319,107 +432,82 @@
         <p>
             Na região de Hoenn, Rayquaza tem um papel importante na história
             envolvendo Groudon e Kyogre. Ele aparece para impedir o conflito
-            entre os dois Pokémon lendários e restaurar o equilíbrio.
+            entre os dois Pokémon lendários e ajudar a restaurar o equilíbrio.
         </p>
 
         <p>
             Sua forma Mega Rayquaza é ainda mais poderosa e possui uma
             aparência cheia de detalhes verdes, amarelos e pretos.
             Neste site, você pode conhecer diferentes imagens, descobrir
-            curiosidades e testar seus conhecimentos!
+            curiosidades e testar seus conhecimentos em vários jogos!
         </p>
 
         <img
             class="imagem-principal"
-            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/384.png"
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/384.png"
             alt="Rayquaza"
         >
 
         <a href="#galeria" class="botao">Explorar Rayquaza</a>
+        <a href="#jogos" class="botao">Jogar agora 🎮</a>
     </section>
 
-    <section id="galeria">
-        <h2>🌟 Galeria do Rayquaza</h2>
+    <section id="galeria" class="revelar">
+        <h2 class="texto-animado">🌟 Galeria do Rayquaza</h2>
 
         <div class="galeria">
-
             <div class="cartao">
-                <img
-                    src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/384.png"
-                    alt="Rayquaza clássico"
-                >
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/384.png" alt="Rayquaza clássico">
                 <h3>Rayquaza Clássico</h3>
                 <p>A forma original do Pokémon lendário.</p>
             </div>
 
             <div class="cartao">
-                <img
-                    src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/384.png"
-                    alt="Rayquaza shiny"
-                >
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/384.png" alt="Rayquaza shiny">
                 <h3>Rayquaza Shiny</h3>
                 <p>Uma versão especial com coloração preta.</p>
             </div>
 
             <div class="cartao">
-                <img
-                    src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/384.gif"
-                    alt="Rayquaza animado"
-                >
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/384.gif" alt="Rayquaza animado">
                 <h3>Rayquaza Animado</h3>
                 <p>Uma versão animada do Pokémon.</p>
             </div>
 
             <div class="cartao">
-                <img
-                    src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/384.png"
-                    alt="Rayquaza visto por trás"
-                >
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/384.png" alt="Rayquaza visto por trás">
                 <h3>Vista Traseira</h3>
                 <p>Rayquaza visto por outro ângulo.</p>
             </div>
 
             <div class="cartao">
-                <img
-                    src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/384.png"
-                    alt="Arte oficial de Rayquaza"
-                >
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/384.png" alt="Arte oficial de Rayquaza">
                 <h3>Arte Oficial</h3>
                 <p>Uma ilustração detalhada de Rayquaza.</p>
             </div>
 
             <div class="cartao">
-                <img
-                    src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/384.png"
-                    alt="Rayquaza no estilo Pokémon HOME"
-                >
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/384.png" alt="Rayquaza no estilo Pokémon HOME">
                 <h3>Rayquaza HOME</h3>
                 <p>Outra apresentação visual do Pokémon.</p>
             </div>
 
             <div class="cartao">
-                <img
-                    src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/384.png"
-                    alt="Rayquaza em Pokémon Emerald"
-                >
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/emerald/384.png" alt="Rayquaza em Pokémon Emerald">
                 <h3>Rayquaza Emerald</h3>
                 <p>Visual inspirado nos jogos da terceira geração.</p>
             </div>
 
             <div class="cartao">
-                <img
-                    src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iv/diamond-pearl/384.png"
-                    alt="Rayquaza em Pokémon Diamond e Pearl"
-                >
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iv/diamond-pearl/384.png" alt="Rayquaza em Diamond e Pearl">
                 <h3>Rayquaza Diamond e Pearl</h3>
                 <p>Uma versão em pixel art dos jogos.</p>
             </div>
-
         </div>
     </section>
 
-    <section id="curiosidades">
-        <h2>💚 Curiosidades sobre Rayquaza</h2>
+    <section id="curiosidades" class="revelar">
+        <h2 class="texto-animado">💚 Curiosidades sobre Rayquaza</h2>
 
         <div class="curiosidades">
             <ul>
@@ -427,7 +515,7 @@
                 <li>Seu número na Pokédex Nacional é 384.</li>
                 <li>Seus tipos são Dragão e Voador.</li>
                 <li>Ele vive na camada de ozônio, muito acima da superfície terrestre.</li>
-                <li>Rayquaza é conhecido por acalmar os conflitos entre Groudon e Kyogre.</li>
+                <li>Rayquaza é conhecido por interromper os conflitos entre Groudon e Kyogre.</li>
                 <li>Ele possui uma forma Mega chamada Mega Rayquaza.</li>
                 <li>Na forma shiny, suas cores mudam principalmente para preto e amarelo.</li>
                 <li>Rayquaza é um dos Pokémon mais conhecidos da região de Hoenn.</li>
@@ -435,98 +523,139 @@
         </div>
     </section>
 
-    <section id="quiz">
-        <h2>🧠 Quiz do Rayquaza</h2>
+    <section id="quiz" class="revelar">
+        <h2 class="texto-animado">🧠 Quiz do Rayquaza</h2>
 
         <div class="jogo">
             <p>Responda às perguntas e veja quantos pontos consegue fazer!</p>
 
             <div class="pergunta">
                 <p><strong>1. Qual é o número de Rayquaza na Pokédex Nacional?</strong></p>
-                <button onclick="responder(1, false)">150</button>
-                <button onclick="responder(1, true)">384</button>
-                <button onclick="responder(1, false)">025</button>
+                <button onclick="responderQuiz(this, 1, false)">150</button>
+                <button onclick="responderQuiz(this, 1, true)">384</button>
+                <button onclick="responderQuiz(this, 1, false)">025</button>
             </div>
 
             <div class="pergunta">
                 <p><strong>2. Quais são os tipos de Rayquaza?</strong></p>
-                <button onclick="responder(2, false)">Fogo e Voador</button>
-                <button onclick="responder(2, false)">Água e Dragão</button>
-                <button onclick="responder(2, true)">Dragão e Voador</button>
+                <button onclick="responderQuiz(this, 2, false)">Fogo e Voador</button>
+                <button onclick="responderQuiz(this, 2, false)">Água e Dragão</button>
+                <button onclick="responderQuiz(this, 2, true)">Dragão e Voador</button>
             </div>
 
             <div class="pergunta">
                 <p><strong>3. Em qual região Rayquaza aparece?</strong></p>
-                <button onclick="responder(3, true)">Hoenn</button>
-                <button onclick="responder(3, false)">Kanto</button>
-                <button onclick="responder(3, false)">Sinnoh</button>
+                <button onclick="responderQuiz(this, 3, true)">Hoenn</button>
+                <button onclick="responderQuiz(this, 3, false)">Kanto</button>
+                <button onclick="responderQuiz(this, 3, false)">Sinnoh</button>
             </div>
 
             <div class="pergunta">
                 <p><strong>4. Onde Rayquaza costuma viver?</strong></p>
-                <button onclick="responder(4, false)">No fundo do mar</button>
-                <button onclick="responder(4, true)">Na camada de ozônio</button>
-                <button onclick="responder(4, false)">Dentro de cavernas</button>
+                <button onclick="responderQuiz(this, 4, false)">No fundo do mar</button>
+                <button onclick="responderQuiz(this, 4, true)">Na camada de ozônio</button>
+                <button onclick="responderQuiz(this, 4, false)">Dentro de cavernas</button>
             </div>
 
             <div class="pergunta">
-                <p><strong>5. Como se chama sua forma especial mais poderosa?</strong></p>
-                <button onclick="responder(5, false)">Gigantamax Rayquaza</button>
-                <button onclick="responder(5, true)">Mega Rayquaza</button>
-                <button onclick="responder(5, false)">Rayquaza Prime</button>
+                <p><strong>5. Como se chama sua forma especial?</strong></p>
+                <button onclick="responderQuiz(this, 5, false)">Gigantamax Rayquaza</button>
+                <button onclick="responderQuiz(this, 5, true)">Mega Rayquaza</button>
+                <button onclick="responderQuiz(this, 5, false)">Rayquaza Prime</button>
             </div>
 
             <div class="pergunta">
                 <p><strong>6. Qual é a cor principal de Rayquaza shiny?</strong></p>
-                <button onclick="responder(6, false)">Azul</button>
-                <button onclick="responder(6, false)">Roxo</button>
-                <button onclick="responder(6, true)">Preto</button>
+                <button onclick="responderQuiz(this, 6, false)">Azul</button>
+                <button onclick="responderQuiz(this, 6, false)">Roxo</button>
+                <button onclick="responderQuiz(this, 6, true)">Preto</button>
             </div>
 
-            <button class="botao" onclick="mostrarResultado()">Ver resultado</button>
+            <button class="botao" onclick="mostrarResultadoQuiz()">Ver resultado</button>
             <button class="botao" onclick="reiniciarQuiz()">Recomeçar</button>
 
-            <p id="resultadoQuiz">Você acertou 0 de 6 perguntas.</p>
+            <p id="resultadoQuiz">Você ainda não respondeu às perguntas.</p>
         </div>
     </section>
 
-    <section id="jogos">
-        <h2>🎮 Mini-jogos</h2>
+    <section id="jogos" class="revelar">
+        <h2 class="texto-animado">🎮 Jogos do Universo Rayquaza</h2>
 
         <div class="jogo">
-            <h3>Desafio: clique no Rayquaza!</h3>
-            <p>
-                Clique no emoji do Rayquaza o máximo de vezes possível
-                em 15 segundos.
-            </p>
-
-            <p>Pontos: <strong id="pontos">0</strong></p>
-            <p>Tempo: <strong id="tempo">15</strong> segundos</p>
+            <h3>🐉 Jogo 1: Clique no Rayquaza!</h3>
+            <p>Clique no Rayquaza o máximo de vezes possível em 15 segundos.</p>
+            <p>Pontos: <strong id="pontosClique">0</strong></p>
+            <p>Tempo: <strong id="tempoClique">15</strong> segundos</p>
 
             <div id="alvo" onclick="clicarRayquaza()">🐉</div>
 
-            <br><br>
-
-            <button class="botao" id="iniciarJogo" onclick="iniciarClique()">
-                Começar jogo
-            </button>
-
+            <br>
+            <button class="botao" id="botaoClique" onclick="iniciarClique()">Começar jogo</button>
             <p id="resultadoClique"></p>
         </div>
 
         <div class="jogo">
-            <h3>✨ Rayquaza Surpresa</h3>
-            <p>
-                Clique no botão para descobrir uma imagem surpresa de Rayquaza!
-            </p>
+            <h3>✨ Jogo 2: Rayquaza Surpresa</h3>
+            <p>Clique para revelar uma imagem aleatória de Rayquaza.</p>
 
-            <button class="botao" onclick="mostrarSurpresa()">
-                Revelar Rayquaza
-            </button>
+            <button class="botao" onclick="mostrarSurpresa()">Revelar Rayquaza</button>
 
             <img id="imagemSurpresa" src="" alt="Imagem surpresa de Rayquaza">
-
             <p id="mensagemSurpresa"></p>
+        </div>
+
+        <div class="jogo">
+            <h3>🧩 Jogo 3: Jogo da Memória</h3>
+            <p>Encontre os dois emojis iguais. Você tem que combinar os pares!</p>
+
+            <div class="cartas-memoria" id="cartasMemoria"></div>
+
+            <p id="resultadoMemoria">Encontre todos os pares!</p>
+            <button class="botao" onclick="iniciarMemoria()">Recomeçar memória</button>
+        </div>
+
+        <div class="jogo">
+            <h3>❓ Jogo 4: Adivinhe o Pokémon</h3>
+            <p id="perguntaAdivinha">Qual é o Pokémon lendário verde que vive na camada de ozônio?</p>
+
+            <div class="opcoes-adivinha">
+                <button onclick="responderAdivinha('Pikachu')">Pikachu</button>
+                <button onclick="responderAdivinha('Rayquaza')">Rayquaza</button>
+                <button onclick="responderAdivinha('Squirtle')">Squirtle</button>
+            </div>
+
+            <p id="resultadoAdivinha"></p>
+            <button class="botao" onclick="novaAdivinha()">Nova pergunta</button>
+        </div>
+
+        <div class="jogo">
+            <h3>⚡ Jogo 5: Desafio Relâmpago</h3>
+            <p>Responda antes que o tempo acabe!</p>
+
+            <p id="perguntaRapida"><strong>Qual é o tipo de Rayquaza?</strong></p>
+
+            <div class="opcoes-adivinha">
+                <button onclick="responderRapido(false)">Água e Gelo</button>
+                <button onclick="responderRapido(true)">Dragão e Voador</button>
+                <button onclick="responderRapido(false)">Fogo e Planta</button>
+            </div>
+
+            <div class="barra-tempo">
+                <div id="barraProgresso"></div>
+            </div>
+
+            <p>Tempo restante: <strong id="tempoRapido">10</strong> segundos</p>
+            <p id="resultadoRapido"></p>
+
+            <button class="botao" onclick="iniciarRapido()">Começar desafio</button>
+        </div>
+
+        <div class="jogo">
+            <h3>🎲 Jogo 6: Sorte do Rayquaza</h3>
+            <p>Clique para descobrir sua mensagem da sorte de hoje!</p>
+
+            <button class="botao" onclick="sortearSorte()">Descobrir minha sorte</button>
+            <p id="resultadoSorte"></p>
         </div>
     </section>
 
@@ -536,30 +665,66 @@
     </footer>
 
     <script>
-        let respostas = {};
-        let pontos = 0;
-        let tempo = 15;
-        let jogoAtivo = false;
-        let intervalo;
+        // Animação dos textos e das seções ao aparecerem na tela
+        const observador = new IntersectionObserver(function(entradas) {
+            entradas.forEach(function(entrada) {
+                if (entrada.isIntersecting) {
+                    entrada.target.classList.add("visivel");
+                }
+            });
+        }, { threshold: 0.12 });
 
-        function responder(pergunta, correta) {
-            respostas[pergunta] = correta;
+        document.querySelectorAll(".revelar").forEach(function(secao) {
+            observador.observe(secao);
+        });
 
-            const botoes = document.querySelectorAll(
-                ".pergunta:nth-of-type(" + pergunta + ") button"
-            );
+        // Quiz
+        const respostasQuiz = {};
 
-            document.getElementById("resultadoQuiz").textContent =
-                "Resposta registrada! Continue respondendo às perguntas.";
+        function responderQuiz(botao, numero, correta) {
+            const pergunta = botao.closest(".pergunta");
+
+            if (respostasQuiz[numero] !== undefined) {
+                return;
+            }
+
+            respostasQuiz[numero] = correta;
+
+            pergunta.querySelectorAll("button").forEach(function(opcao) {
+                opcao.disabled = true;
+                opcao.style.cursor = "default";
+            });
+
+            if (correta) {
+                botao.classList.add("resposta-correta");
+                document.getElementById("resultadoQuiz").textContent =
+                    "Resposta registrada! Você acertou essa pergunta.";
+            } else {
+                botao.classList.add("resposta-errada");
+                document.getElementById("resultadoQuiz").textContent =
+                    "Resposta registrada! Continue tentando nas próximas.";
+            }
         }
 
-        function mostrarResultado() {
+        function mostrarResultadoQuiz() {
             let acertos = 0;
+            let respondidas = 0;
 
             for (let i = 1; i <= 6; i++) {
-                if (respostas[i] === true) {
-                    acertos++;
+                if (respostasQuiz[i] !== undefined) {
+                    respondidas++;
+
+                    if (respostasQuiz[i] === true) {
+                        acertos++;
+                    }
                 }
+            }
+
+            if (respondidas < 6) {
+                document.getElementById("resultadoQuiz").textContent =
+                    "Você respondeu " + respondidas + " de 6 perguntas e acertou " +
+                    acertos + ". Responda às que faltam!";
+                return;
             }
 
             let mensagem = "Você acertou " + acertos + " de 6 perguntas!";
@@ -569,62 +734,70 @@
             } else if (acertos >= 4) {
                 mensagem += " Muito bem! Você conhece bastante o Rayquaza!";
             } else {
-                mensagem += " Continue aprendendo sobre Rayquaza e tente novamente!";
+                mensagem += " Continue aprendendo e tente novamente!";
             }
 
             document.getElementById("resultadoQuiz").textContent = mensagem;
         }
 
         function reiniciarQuiz() {
-            respostas = {};
-            document.getElementById("resultadoQuiz").textContent =
-                "Você acertou 0 de 6 perguntas.";
-
-            document.querySelectorAll(".pergunta button").forEach(function(botao) {
-                botao.style.background = "#fff";
-            });
-        }
-
-        function iniciarClique() {
-            if (jogoAtivo) {
-                return;
+            for (let numero in respostasQuiz) {
+                delete respostasQuiz[numero];
             }
 
-            pontos = 0;
-            tempo = 15;
-            jogoAtivo = true;
+            document.querySelectorAll(".pergunta button").forEach(function(botao) {
+                botao.disabled = false;
+                botao.classList.remove("resposta-correta", "resposta-errada");
+                botao.style.cursor = "pointer";
+            });
 
-            document.getElementById("pontos").textContent = pontos;
-            document.getElementById("tempo").textContent = tempo;
+            document.getElementById("resultadoQuiz").textContent =
+                "Você ainda não respondeu às perguntas.";
+        }
+
+        // Jogo de cliques
+        let pontosClique = 0;
+        let tempoClique = 15;
+        let jogoCliqueAtivo = false;
+        let intervaloClique;
+
+        function iniciarClique() {
+            if (jogoCliqueAtivo) return;
+
+            clearInterval(intervaloClique);
+
+            pontosClique = 0;
+            tempoClique = 15;
+            jogoCliqueAtivo = true;
+
+            document.getElementById("pontosClique").textContent = pontosClique;
+            document.getElementById("tempoClique").textContent = tempoClique;
             document.getElementById("resultadoClique").textContent =
                 "Valendo! Clique rápido!";
+            document.getElementById("botaoClique").disabled = true;
 
-            document.getElementById("iniciarJogo").disabled = true;
+            intervaloClique = setInterval(function() {
+                tempoClique--;
+                document.getElementById("tempoClique").textContent = tempoClique;
 
-            intervalo = setInterval(function() {
-                tempo--;
-                document.getElementById("tempo").textContent = tempo;
-
-                if (tempo <= 0) {
-                    clearInterval(intervalo);
-                    jogoAtivo = false;
-
-                    document.getElementById("iniciarJogo").disabled = false;
+                if (tempoClique <= 0) {
+                    clearInterval(intervaloClique);
+                    jogoCliqueAtivo = false;
+                    document.getElementById("botaoClique").disabled = false;
                     document.getElementById("resultadoClique").textContent =
-                        "Fim de jogo! Você fez " + pontos + " pontos!";
+                        "Fim de jogo! Você fez " + pontosClique + " pontos!";
                 }
             }, 1000);
         }
 
         function clicarRayquaza() {
-            if (!jogoAtivo) {
-                return;
-            }
+            if (!jogoCliqueAtivo) return;
 
-            pontos++;
-            document.getElementById("pontos").textContent = pontos;
+            pontosClique++;
+            document.getElementById("pontosClique").textContent = pontosClique;
         }
 
+        // Rayquaza surpresa
         function mostrarSurpresa() {
             const imagens = [
                 "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/384.png",
@@ -641,7 +814,224 @@
             elemento.src = imagem;
 
             document.getElementById("mensagemSurpresa").textContent =
-                "🐉 Você encontrou uma nova imagem de Rayquaza!";
+                "🐉 Você encontrou uma imagem de Rayquaza!";
+        }
+
+        // Jogo da memória
+        const simbolosMemoria = ["🐉", "⭐", "💚", "🔥", "🐉", "⭐", "💚", "🔥", "⚡"];
+        let cartasEscolhidas = [];
+        let paresEncontrados = 0;
+        let bloqueadoMemoria = false;
+
+        function iniciarMemoria() {
+            const simbolos = simbolosMemoria.slice();
+            simbolos.push("🌟");
+
+            // Garantir quantidade par de cartas
+            simbolos.push("🌟");
+
+            for (let i = simbolos.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [simbolos[i], simbolos[j]] = [simbolos[j], simbolos[i]];
+            }
+
+            cartasEscolhidas = [];
+            paresEncontrados = 0;
+            bloqueadoMemoria = false;
+
+            const tabuleiro = document.getElementById("cartasMemoria");
+            tabuleiro.innerHTML = "";
+
+            simbolos.forEach(function(simbolo, indice) {
+                const carta = document.createElement("button");
+                carta.className = "carta";
+                carta.textContent = "❔";
+                carta.dataset.simbolo = simbolo;
+                carta.dataset.indice = indice;
+                carta.setAttribute("aria-label", "Carta escondida");
+                carta.onclick = function() {
+                    virarCarta(carta);
+                };
+                tabuleiro.appendChild(carta);
+            });
+
+            document.getElementById("resultadoMemoria").textContent =
+                "Encontre todos os pares!";
+        }
+
+        function virarCarta(carta) {
+            if (
+                bloqueadoMemoria ||
+                carta.classList.contains("revelada") ||
+                carta.dataset.encontrada === "sim"
+            ) {
+                return;
+            }
+
+            carta.textContent = carta.dataset.simbolo;
+            carta.classList.add("revelada");
+            cartasEscolhidas.push(carta);
+
+            if (cartasEscolhidas.length === 2) {
+                bloqueadoMemoria = true;
+
+                const primeira = cartasEscolhidas[0];
+                const segunda = cartasEscolhidas[1];
+
+                if (primeira.dataset.simbolo === segunda.dataset.simbolo) {
+                    primeira.dataset.encontrada = "sim";
+                    segunda.dataset.encontrada = "sim";
+                    paresEncontrados++;
+                    cartasEscolhidas = [];
+                    bloqueadoMemoria = false;
+
+                    document.getElementById("resultadoMemoria").textContent =
+                        "Boa! Pares encontrados: " + paresEncontrados + ".";
+
+                    const totalPares = document.querySelectorAll(".carta").length / 2;
+
+                    if (paresEncontrados === totalPares) {
+                        document.getElementById("resultadoMemoria").textContent =
+                            "Parabéns! Você encontrou todos os pares! 🎉";
+                    }
+                } else {
+                    setTimeout(function() {
+                        primeira.textContent = "❔";
+                        segunda.textContent = "❔";
+                        primeira.classList.remove("revelada");
+                        segunda.classList.remove("revelada");
+                        cartasEscolhidas = [];
+                        bloqueadoMemoria = false;
+                    }, 850);
+                }
+            }
+        }
+
+        iniciarMemoria();
+
+        // Adivinhe o Pokémon
+        const perguntasAdivinha = [
+            {
+                pergunta: "Qual é o Pokémon lendário verde que vive na camada de ozônio?",
+                resposta: "Rayquaza",
+                opcoes: ["Pikachu", "Rayquaza", "Squirtle"]
+            },
+            {
+                pergunta: "Qual Pokémon lendário está associado aos oceanos?",
+                resposta: "Kyogre",
+                opcoes: ["Kyogre", "Eevee", "Bulbasaur"]
+            },
+            {
+                pergunta: "Qual Pokémon lendário está associado aos continentes?",
+                resposta: "Groudon",
+                opcoes: ["Mew", "Groudon", "Psyduck"]
+            }
+        ];
+
+        let indiceAdivinha = 0;
+
+        function carregarAdivinha() {
+            const atual = perguntasAdivinha[indiceAdivinha];
+
+            document.getElementById("perguntaAdivinha").textContent = atual.pergunta;
+
+            const area = document.querySelector("#resultadoAdivinha")
+                .previousElementSibling;
+
+            area.innerHTML = "";
+
+            atual.opcoes.forEach(function(opcao) {
+                const botao = document.createElement("button");
+                botao.textContent = opcao;
+                botao.onclick = function() {
+                    responderAdivinha(opcao);
+                };
+                area.appendChild(botao);
+            });
+
+            document.getElementById("resultadoAdivinha").textContent = "";
+        }
+
+        function responderAdivinha(resposta) {
+            const atual = perguntasAdivinha[indiceAdivinha];
+
+            if (resposta === atual.resposta) {
+                document.getElementById("resultadoAdivinha").textContent =
+                    "Acertou! Você conhece os Pokémon! 🎉";
+            } else {
+                document.getElementById("resultadoAdivinha").textContent =
+                    "Não foi dessa vez! A resposta certa era " + atual.resposta + ".";
+            }
+        }
+
+        function novaAdivinha() {
+            indiceAdivinha = (indiceAdivinha + 1) % perguntasAdivinha.length;
+            carregarAdivinha();
+        }
+
+        carregarAdivinha();
+
+        // Desafio relâmpago
+        let intervaloRapido;
+        let tempoRapido = 10;
+        let desafioRapidoAtivo = false;
+
+        function iniciarRapido() {
+            clearInterval(intervaloRapido);
+
+            tempoRapido = 10;
+            desafioRapidoAtivo = true;
+
+            document.getElementById("tempoRapido").textContent = tempoRapido;
+            document.getElementById("barraProgresso").style.width = "100%";
+            document.getElementById("resultadoRapido").textContent =
+                "Responda antes do tempo acabar!";
+
+            intervaloRapido = setInterval(function() {
+                tempoRapido--;
+
+                document.getElementById("tempoRapido").textContent = tempoRapido;
+                document.getElementById("barraProgresso").style.width =
+                    (tempoRapido / 10 * 100) + "%";
+
+                if (tempoRapido <= 0) {
+                    clearInterval(intervaloRapido);
+                    desafioRapidoAtivo = false;
+                    document.getElementById("resultadoRapido").textContent =
+                        "O tempo acabou! Tente novamente.";
+                }
+            }, 1000);
+        }
+
+        function responderRapido(correta) {
+            if (!desafioRapidoAtivo) {
+                document.getElementById("resultadoRapido").textContent =
+                    "Clique em Começar desafio primeiro!";
+                return;
+            }
+
+            clearInterval(intervaloRapido);
+            desafioRapidoAtivo = false;
+
+            document.getElementById("resultadoRapido").textContent = correta
+                ? "Resposta certa! Você foi rápido! ⚡"
+                : "Resposta errada! A resposta era Dragão e Voador.";
+        }
+
+        // Sorte do Rayquaza
+        function sortearSorte() {
+            const mensagens = [
+                "🐉 Hoje é um ótimo dia para mostrar sua força!",
+                "💚 Sua coragem será sua maior vantagem!",
+                "⭐ Uma surpresa boa pode estar chegando!",
+                "⚡ Continue tentando: cada desafio ensina algo novo!",
+                "🌟 Confie em você e siga em frente!",
+                "🔥 Hoje é dia de superar um desafio!",
+                "🐲 Sua energia está no nível de um Pokémon lendário!"
+            ];
+
+            const sorte = mensagens[Math.floor(Math.random() * mensagens.length)];
+            document.getElementById("resultadoSorte").textContent = sorte;
         }
     </script>
 
