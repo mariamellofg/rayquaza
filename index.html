@@ -174,12 +174,6 @@ p {
     max-width: 700px;
 }
 
-.opcoes {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
 .barra {
     height: 7px;
     width: 0;
@@ -201,12 +195,6 @@ footer {
     font-weight: bold;
 }
 
-#pontos {
-    color: #ffdf37;
-    font-size: 22px;
-    margin: 15px;
-}
-
 #arena {
     position: relative;
     height: 300px;
@@ -226,7 +214,6 @@ footer {
     cursor: pointer;
     left: 45%;
     top: 40%;
-    transition: left .15s, top .15s;
 }
 
 .quiz-opcao {
@@ -284,19 +271,14 @@ footer {
 
 <section id="inicio" class="hero">
     <h2>O guardião dos céus</h2>
-
-    <img
-        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/384.png"
-        alt="Rayquaza"
-    >
-
+    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/384.png" alt="Rayquaza">
     <div class="barra"></div>
 
     <p>
-        Entre no universo de Rayquaza, o lendário Pokémon dos tipos
-        Dragão e Voador! Explore imagens, descubra curiosidades,
-        responda desafios e jogue minigames neste mundo cheio de
-        energia, aventuras e poderes extraordinários.
+        Bem-vindo ao Universo Rayquaza! Explore o mundo de um dos Pokémon
+        lendários mais incríveis. Descubra curiosidades, veja imagens,
+        responda perguntas e participe de jogos neste universo cheio de
+        aventuras, poderes e energia!
     </p>
 
     <button class="botao" onclick="surpresa()">✨ Poder misterioso</button>
@@ -308,25 +290,19 @@ footer {
 
     <div class="grade">
         <div class="card">
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/384.png" alt="Rayquaza normal">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/384.png" alt="Rayquaza">
             <h3>Rayquaza</h3>
             <p>O lendário guardião da atmosfera.</p>
         </div>
 
         <div class="card">
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/384.png" alt="Rayquaza em sua forma lendária">
-            <h3>Rei dos céus</h3>
-            <p>Um dos Pokémon mais marcantes da região de Hoenn.</p>
-        </div>
-
-        <div class="card">
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/383.png" alt="Groudon">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/383.png" alt="Groudon">
             <h3>Groudon</h3>
-            <p>O poderoso Pokémon lendário dos continentes.</p>
+            <p>O Pokémon lendário associado aos continentes.</p>
         </div>
 
         <div class="card">
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/382.png" alt="Kyogre">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/382.png" alt="Kyogre">
             <h3>Kyogre</h3>
             <p>O lendário Pokémon associado aos oceanos.</p>
         </div>
@@ -353,6 +329,12 @@ footer {
             <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/249.png" alt="Lugia">
             <h3>Lugia</h3>
             <p>Um Pokémon lendário ligado aos mares e aos céus.</p>
+        </div>
+
+        <div class="card">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/133.png" alt="Eevee">
+            <h3>Eevee</h3>
+            <p>Um Pokémon conhecido por suas várias evoluções.</p>
         </div>
     </div>
 </section>
@@ -387,8 +369,8 @@ footer {
     <h2>🧠 Quiz do Rayquaza</h2>
 
     <div class="painel">
-        <p id="pergunta">Qual é o número de Rayquaza na Pokédex?</p>
-        <div class="opcoes" id="opcoes"></div>
+        <p id="pergunta"></p>
+        <div id="opcoes"></div>
         <p id="resultado2"></p>
         <p id="progresso"></p>
         <button class="botao" onclick="proximaPergunta()">Próxima pergunta ➜</button>
@@ -414,7 +396,7 @@ footer {
 </section>
 
 <section id="colecao">
-    <h2>🏆 Colecione os Pokémon</h2>
+    <h2>🏆 Encontre um Pokémon</h2>
 
     <div class="painel">
         <p>Clique no botão para encontrar um Pokémon aleatório!</p>
@@ -426,6 +408,7 @@ footer {
 <footer>
     <p>🐉 Universo Rayquaza</p>
     <p>Feito com 💚, ❤️ e 💛 para fãs de Pokémon!</p>
+    <p>✨ Feito especialmente para Gabriel da Silva de Souza ✨</p>
     <p>Pokémon é uma marca de seus respectivos proprietários.</p>
 </footer>
 
@@ -480,7 +463,8 @@ function mostrarPergunta() {
     document.getElementById("pergunta").textContent = p.pergunta;
     document.getElementById("resultado2").textContent = "";
     document.getElementById("progresso").textContent =
-        "Pergunta " + (indice + 1) + " de " + perguntas.length;
+        "Pergunta " + (indice + 1) + " de " + perguntas.length +
+        " | Pontos: " + pontosQuiz;
 
     const opcoes = document.getElementById("opcoes");
     opcoes.innerHTML = "";
@@ -509,8 +493,9 @@ function responder(opcao) {
         resultado.textContent = "💚 A resposta era: " + correta;
     }
 
-    document.getElementById("progresso").textContent +=
-        " | Pontuação: " + pontosQuiz;
+    document.getElementById("progresso").textContent =
+        "Pergunta " + (indice + 1) + " de " + perguntas.length +
+        " | Pontos: " + pontosQuiz;
 
     document.querySelectorAll(".quiz-opcao").forEach(b => {
         b.disabled = true;
